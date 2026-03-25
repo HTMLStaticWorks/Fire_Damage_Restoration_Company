@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100">
+  <!-- Background Plate -->
+  <rect x="5" y="5" width="390" height="90" rx="15" fill="white" />
+  
+  <!-- Icon Group -->
+  <g transform="translate(10, 5) scale(0.9)">
+      <path d="M50 5 L90 25 V60 C90 85 50 95 50 95 C50 95 10 85 10 60 V25 L50 5Z" fill="#1a1a1a" />
+      <path d="M50 15 L80 32 V58 C80 75 50 85 50 85 C50 85 20 75 20 58 V32 L50 15Z" fill="white" />
+      
+      <!-- Fire -->
+      <g transform="translate(25, 38) scale(0.25)">
+        <path d="M50 10 C30 35 30 55 50 85 C70 55 70 35 50 10" fill="#ff6a00" />
+      </g>
+      <!-- Gear -->
+      <g transform="translate(58, 48) scale(0.18)">
+        <circle cx="50" cy="50" r="20" fill="#4a4a4a" />
+        <path d="M10 10 L90 90 M90 10 L10 90" stroke="#4a4a4a" stroke-width="20" stroke-linecap="round" />
+        <!-- N-S-E-W Dots -->
+        <circle cx="50" cy="10" r="6" fill="#1a1a1a" />
+        <circle cx="50" cy="90" r="6" fill="#1a1a1a" />
+        <circle cx="90" cy="50" r="6" fill="#1a1a1a" />
+        <circle cx="10" cy="50" r="6" fill="#1a1a1a" />
+      </g>
+      <!-- Arrow -->
+      <path d="M42 62 H58 M52 56 L58 62 L52 68" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  </g>
+
+  <!-- Brand Text -->
+  <text x="120" y="65" font-family="'Inter', Arial, sans-serif" font-weight="900" font-size="52" fill="#1a1a1a" letter-spacing="-2">Restore<tspan fill="#ff6a00">X</tspan></text>
+</svg>
