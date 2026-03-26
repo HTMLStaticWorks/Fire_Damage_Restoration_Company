@@ -78,7 +78,7 @@ function renderHeader() {
 
 function renderFooter() {
     const footerHtml = `
-    <footer class="section-padding bg-light border-top">
+    <footer class="main-footer-section bg-light">
         <div class="container container-custom">
             <div class="row g-4">
                 <div class="col-lg-4 text-dark">
@@ -115,7 +115,7 @@ function renderFooter() {
                     </div>
                 </div>
             </div>
-            <hr class="my-5">
+            <hr class="my-4">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
                 <p class="small-text mb-0">&copy; 2026 RestoreX. All rights reserved.</p>
                 <a href="#" class="btn btn-sm btn-outline"><i class="bi bi-arrow-up"></i> Top</a>
