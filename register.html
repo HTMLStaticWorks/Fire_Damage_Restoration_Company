@@ -11,43 +11,47 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="bg-light">
-    <header id="main-header"></header>
+    <div class="position-fixed top-0 end-0 p-3 d-flex gap-2" style="z-index: 1050;">
+        <button id="theme-toggle" class="btn btn-sm btn-dark" style="padding: 4px;">
+            <img src="assets/images/icons/moon_icon.png" class="img-icon theme-icon-img" alt="Theme">
+        </button>
+        <button id="rtl-toggle" class="btn btn-sm btn-secondary">RTL</button>
+    </div>
+
 
     <main>
-        <section class="section-padding mt-5 d-flex align-items-center" style="min-height: 80vh;">
+        <section class="section-padding d-flex align-items-center" style="min-height: 100vh;">
             <div class="container container-custom">
                 <div class="row justify-content-center">
-                    <div class="col-md-6">
-                        <div class="card border-0 shadow-lg p-4 p-md-5 rounded-4">
-                            <div class="text-center mb-4">
-                                <img src="assets/images/logo.svg" height="50" class="mb-3">
+                    <div class="col-md-8 col-lg-6">
+                        <div class="card border-0 shadow-lg p-3 p-md-4 rounded-4">
+                            <div class="text-center mb-3">
+                                <a href="index.html">
+                                    <img src="assets/images/logo.svg" height="50" class="mb-3">
+                                </a>
                                 <h3>Create Account</h3>
                                 <p class="text-dark small">Join the RestoreX portal to manage your restoration.</p>
                             </div>
-                            <form action="dashboard.html">
-                                <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <label class="form-label fw-bold small">First Name</label>
-                                        <input type="text" class="form-control p-3" placeholder="John" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label fw-bold small">Last Name</label>
-                                        <input type="text" class="form-control p-3" placeholder="Doe" required>
+                            <form action="dashboard.html" class="auth-form">
+                                <div class="row g-2">
+                                    <div class="col-12">
+                                        <label class="form-label fw-bold small">Full Name</label>
+                                        <input type="text" class="form-control p-2" placeholder="John Doe" required>
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label fw-bold small">Email Address</label>
-                                        <input type="email" class="form-control p-3" placeholder="john@example.com" required>
+                                        <input type="email" class="form-control p-2" placeholder="john@example.com" required>
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label fw-bold small">Role</label>
-                                        <select class="form-select p-3">
+                                        <select class="form-select p-2">
                                             <option value="homeowner">Homeowner</option>
                                             <option value="adjuster">Insurance Adjuster</option>
                                         </select>
                                     </div>
                                     <div class="col-12">
                                         <label class="form-label fw-bold small">Password</label>
-                                        <input type="password" class="form-control p-3" placeholder="Min. 8 characters" required>
+                                        <input type="password" class="form-control p-2" placeholder="Min. 8 characters" required>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-check">
@@ -56,12 +60,20 @@
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button type="submit" class="btn btn-primary w-100 p-3 fw-bold">Create Account</button>
+                                        <button type="submit" class="btn btn-primary w-100 p-2 fw-bold">Create Account</button>
                                     </div>
                                 </div>
                             </form>
-                            <div class="text-center mt-4">
+                            <div class="text-center mt-3">
                                 <p class="small text-dark mb-0">Already have an account? <a href="login.html" class="fw-bold text-decoration-none">Sign In</a></p>
+                            </div>
+                            <div class="text-center mt-3 pt-3 border-top">
+                                <p class="small text-muted mb-2">Or continue with</p>
+                                <div class="d-flex justify-content-center gap-3 social-icons-row">
+                                    <a href="#" class="btn social-login-btn btn-sm shadow-sm p-2"><img src="assets/images/icons/fb_icon.png" width="20"></a>
+                                    <a href="#" class="btn social-login-btn btn-sm shadow-sm p-2"><img src="assets/images/icons/tw_icon.png" width="20"></a>
+                                    <a href="#" class="btn social-login-btn btn-sm shadow-sm p-2"><img src="assets/images/icons/ig_icon.png" width="20"></a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -70,7 +82,6 @@
         </section>
     </main>
 
-    <footer id="main-footer"></footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/main.js"></script>
 </body>

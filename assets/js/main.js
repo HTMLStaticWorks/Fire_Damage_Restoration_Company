@@ -22,44 +22,48 @@ const navLinks = [
 ];
 
 function renderHeader() {
+    const currentPage = window.location.pathname.split("/").pop() || 'index.html';
     const headerHtml = `
     <nav class="navbar fixed-top navbar-light">
         <div class="container-fluid container-custom d-flex align-items-center justify-content-between">
-            <!-- Mobile Hamburger (Left - only visible < 1100px) -->
-            <button class="btn mobile-only border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
-                <i class="bi bi-list fs-1"></i>
-            </button>
-
-            <!-- Logo (Centered on < 1100px, Left on > 1100px) -->
+            <!-- Logo (Left) -->
             <a class="navbar-brand m-0" href="index.html">
                 <img src="assets/images/logo.svg" alt="RestoreX Logo" height="45">
             </a>
 
-            <!-- Desktop Nav (Visible > 1300px) -->
+            <!-- Mobile Hamburger (Right - only visible < 1100px) -->
+            <button class="btn mobile-only border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar">
+                <i class="bi bi-list fs-1"></i>
+            </button>
+
             <div class="desktop-only gap-2">
-                ${navLinks.map(link => `<a href="${link.url}" class="nav-link fw-bold">${link.name}</a>`).join('')}
+                ${navLinks.map(link => {
+                    const isActive = link.url === currentPage ? 'active' : '';
+                    return `<a href="${link.url}" class="nav-link fw-bold ${isActive}">${link.name}</a>`;
+                }).join('')}
             </div>
 
-            <!-- Header Actions (Visible > 1300px) -->
+            <!-- Header Actions (Visible > 1100px) -->
             <div class="desktop-only align-items-center gap-1">
                 <a href="dashboard.html" class="btn btn-dark text-white fw-bold">Dashboard</a>
                 <a href="login.html" class="btn btn-outline border-2">Login</a>
                 <a href="register.html" class="btn btn-primary">Sign Up</a>
-                <button id="theme-toggle" class="btn btn-sm btn-dark ms-1"><i class="bi bi-moon-stars"></i></button>
+                <button id="theme-toggle" class="btn btn-sm btn-dark ms-1" style="padding: 4px;"><img src="assets/images/icons/moon_icon.png" class="img-icon theme-icon-img" alt="Theme"></button>
                 <button id="rtl-toggle" class="btn btn-sm btn-secondary">RTL</button>
             </div>
         </div>
     </nav>
 
     <!-- Offcanvas Mobile Menu -->
-    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title"><img src="assets/images/logo.svg" height="40"></h5>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
+        <div class="offcanvas-header justify-content-end">
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
         </div>
-        <div class="offcanvas-body">
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                ${navLinks.map(link => `<li class="nav-item"><a class="nav-link" href="${link.url}">${link.name}</a></li>`).join('')}
+                ${navLinks.map(link => {
+                    const isActive = link.url === currentPage ? 'active' : '';
+                    return `<li class="nav-item"><a class="nav-link ${isActive}" href="${link.url}">${link.name}</a></li>`;
+                }).join('')}
                 <hr>
                 <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
                 <li class="nav-item"><a class="nav-link" href="register.html">Get Started</a></li>
@@ -85,9 +89,9 @@ function renderFooter() {
                     <img src="assets/images/logo.svg" height="40" class="mb-3">
                     <p>Premium disaster recovery services. Restoring peace of mind since 2026.</p>
                     <div class="social-links d-flex gap-3">
-                        <a href="#" class="text-dark"><i class="bi bi-facebook fs-4"></i></a>
-                        <a href="#" class="text-dark"><i class="bi bi-twitter-x fs-4"></i></a>
-                        <a href="#" class="text-dark"><i class="bi bi-instagram fs-4"></i></a>
+                        <a href="#" class="text-dark"><img src="assets/images/icons/fb_icon.png" class="img-icon" alt="Facebook"></a>
+                        <a href="#" class="text-dark"><img src="assets/images/icons/tw_icon.png" class="img-icon" alt="Twitter"></a>
+                        <a href="#" class="text-dark"><img src="assets/images/icons/ig_icon.png" class="img-icon" alt="Instagram"></a>
                     </div>
                 </div>
                 <div class="col-lg-2">
@@ -118,7 +122,7 @@ function renderFooter() {
             <hr class="my-4">
             <div class="d-flex flex-wrap justify-content-between align-items-center">
                 <p class="small-text mb-0">&copy; 2026 RestoreX. All rights reserved.</p>
-                <a href="#" class="btn btn-sm btn-outline"><i class="bi bi-arrow-up"></i> Top</a>
+                <a href="#" class="btn btn-sm btn-outline"><img src="assets/images/icons/arrow_up_icon.png" class="img-icon" alt="Top"> Top</a>
             </div>
         </div>
     </footer>
@@ -134,7 +138,7 @@ function setupTheme() {
     const applyTheme = (theme) => {
         document.documentElement.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
-        if (toggleBtn) toggleBtn.innerHTML = theme === 'dark' ? '<i class="bi bi-sun"></i>' : '<i class="bi bi-moon-stars"></i>';
+        if (toggleBtn) toggleBtn.innerHTML = theme === 'dark' ? '<img src="assets/images/icons/sun_icon.png" class="img-icon theme-icon-img" alt="Sun">' : '<img src="assets/images/icons/moon_icon.png" class="img-icon theme-icon-img" alt="Moon">';
     };
 
     const currentTheme = localStorage.getItem('theme') || 'light';

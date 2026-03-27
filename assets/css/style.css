@@ -58,25 +58,34 @@ p { font-size: 18px; color: var(--text-muted); }
 
 .logo-container img { height: 45px; }
 
-/* 1300px Breakpoint Rules (Strict) */
-@media (max-width: 1300px) {
+/* 1100px Breakpoint Rules (Strict) */
+@media (max-width: 1100px) {
   .desktop-only { display: none !important; }
   .mobile-only { display: block !important; }
   .navbar { justify-content: space-between; }
   .navbar-brand { 
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    position: static;
+    transform: none;
   }
 }
 
-@media (min-width: 1301px) {
+@media (min-width: 1101px) {
   .desktop-only { display: flex !important; align-items: center; }
   .mobile-only { display: none !important; }
   .navbar-brand { position: static; transform: none; }
 }
 
-.nav-link { font-size: 14px; padding: 0.5rem 0.5rem !important; }
+.nav-link { font-size: 14px; padding: 0.5rem 0.5rem !important; transition: var(--transition); }
+.nav-link.active { color: var(--accent) !important; position: relative; }
+.desktop-only .nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0.5rem;
+  right: 0.5rem;
+  height: 2px;
+  background-color: var(--accent);
+}
 .navbar .btn { padding: 6px 14px; font-size: 13px; }
 
 /* Buttons */
@@ -110,8 +119,27 @@ p { font-size: 18px; color: var(--text-muted); }
 
 /* Footer Refinements */
 .main-footer-section {
-    padding: 40px 0 !important;
+    padding: 60px 0 !important;
     border-top: 5px solid var(--accent) !important;
+}
+
+.main-footer-section h5 {
+    color: var(--text-dark);
+    margin-bottom: 20px;
+}
+
+.main-footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.main-footer-section ul li a {
+    transition: var(--transition);
+    display: inline-block;
+}
+
+.main-footer-section ul li a:hover {
+    color: var(--accent) !important;
+    transform: translateX(5px);
 }
 
 .container-custom {
@@ -185,3 +213,344 @@ p { font-size: 18px; color: var(--text-muted); }
 [data-theme="dark"] .bg-light-black { background-color: #000000 !important; border: 1px solid #333; }
 .bg-orange { background-color: var(--accent) !important; color: #ffffff !important; }
 .text-orange { color: var(--accent) !important; }
+/* FAQ Section Enhancements */
+.faq-accordion .accordion-item {
+  border: none;
+  margin-bottom: 1.25rem;
+  border-radius: 12px !important;
+  overflow: hidden;
+  background-color: var(--bg-card);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+}
+
+.faq-accordion .accordion-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.faq-accordion .accordion-button {
+  padding: 1.5rem;
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-accordion .accordion-button:focus {
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.faq-accordion .accordion-button:not(.collapsed) {
+  color: var(--accent);
+  background-color: rgba(255, 106, 0, 0.03);
+}
+
+.faq-accordion .accordion-button::after {
+  display: none; /* Hide default Bootstrap icon */
+}
+
+/* Custom Icon using Bootstrap Icons */
+.faq-accordion .accordion-button::before {
+  content: "\F4FE"; /* plus-lg */
+  font-family: 'bootstrap-icons';
+  font-size: 1.25rem;
+  margin-left: auto;
+  order: 2;
+  transition: transform 0.3s ease;
+  font-weight: bold;
+}
+
+.faq-accordion .accordion-button:not(.collapsed)::before {
+  content: "\F2EC"; /* dash-lg */
+  transform: rotate(180deg);
+}
+
+.faq-accordion .accordion-body {
+  padding: 0 1.5rem 1.5rem;
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+[data-theme="dark"] .faq-accordion .accordion-item {
+  background-color: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .faq-accordion .accordion-button:not(.collapsed) {
+  background-color: rgba(255, 106, 0, 0.08);
+}
+
+/* FAQ CTA Card */
+.faq-cta-card {
+  background-color: var(--bg-card);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: var(--transition);
+}
+
+.faq-cta-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.faq-cta-card .cta-info h6 {
+  margin-bottom: 0.25rem;
+  font-weight: 700;
+}
+
+.faq-cta-card .cta-info p {
+  font-size: 0.9rem;
+  margin-bottom: 0;
+}
+
+[data-theme="dark"] .faq-cta-card {
+  background-color: #1a1a1a;
+  border-color: #333;
+}
+
+/* Image Icons */
+.img-icon {
+  width: 1.25em;
+  height: 1.25em;
+  vertical-align: middle;
+  object-fit: contain;
+  display: inline-block;
+}
+.icon-box .img-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
+}
+.social-links .img-icon {
+  width: 28px;
+  height: 28px;
+  filter: grayscale(1) opacity(0.8);
+  transition: var(--transition);
+}
+.social-links a:hover .img-icon {
+  filter: grayscale(0) opacity(1);
+  transform: translateY(-3px);
+}
+.star-rating .img-icon {
+  width: 20px;
+  height: 20px;
+}
+.btn .img-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+.feature-icon .img-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 1rem;
+}
+.img-icon-rotate-right {
+  transform: rotate(90deg);
+}
+
+.social-login-btn {
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-card);
+}
+
+.social-login-btn:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent) !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1) !important;
+}
+
+.social-login-btn img {
+  filter: grayscale(1);
+  transition: var(--transition);
+}
+
+.social-login-btn:hover img {
+  filter: grayscale(0);
+}
+
+/* Authentication Form Refinements */
+.auth-form label {
+  text-align: start !important;
+  display: block;
+}
+
+.auth-form .form-check {
+  text-align: start !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.auth-form .form-check-input {
+  margin-top: 0;
+  float: none;
+}
+
+.auth-form .form-check-label {
+  margin-bottom: 0;
+}
+
+.auth-row {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100%;
+  gap: 1rem;
+  text-align: start !important;
+}
+
+.social-icons-row {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 1rem !important;
+}
+
+/* Mobile Center Alignment (< 1100px) */
+@media (max-width: 1100px) {
+  h1, h2, h3, h4, h5, h6, p, .lead, span, 
+  main div:not(.navbar-brand):not(.star-rating):not(.social-links):not(.mobile-nav-toggle) {
+    text-align: center !important;
+  }
+
+  img {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+  }
+
+  /* Target content-specific flex containers, excluding core UI components */
+  main .d-flex:not(.star-rating):not(.social-links):not(.navbar-nav):not(.social-icons-row):not(.auth-row) {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: 1rem !important;
+  }
+
+  /* List items with icons - keep icon next to text but center the whole block */
+  .list-unstyled li, .list-group-item {
+    display: flex !important;
+    flex-direction: row !important; /* Keep icon next to text */
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    text-align: left !important;
+  }
+
+  /* Specific fix for order when text and image are swapped */
+  .row.align-items-center {
+    display: flex;
+    flex-direction: column !important;
+  }
+  
+  .order-md-1, .order-md-2, .order-lg-1, .order-lg-2 {
+    order: unset !important; /* Stack in natural source order on mobile if not already handled by Bootstrap */
+  }
+
+  main .btn:not(.navbar .btn):not(.w-100) {
+    width: fit-content !important;
+    margin: 0 auto !important;
+  }
+
+  .navbar .mobile-only {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .text-md-end, .text-lg-end {
+    text-align: center !important;
+  }
+  
+  .ms-auto, .me-auto, .mx-lg-0 {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .img-icon {
+    display: inline-block !important;
+    margin: 0 !important;
+  }
+
+  /* Specific fix for social login icons to prevent stacking */
+  .social-icons-row img {
+    display: inline-block !important;
+    margin: 0 !important;
+    width: 20px !important;
+    height: 20px !important;
+  }
+}
+
+/* Carrier Cards */
+.carrier-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    height: 100%;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+}
+
+.carrier-card i {
+    font-size: 2.5rem;
+    transition: var(--transition);
+    color: var(--text-muted);
+}
+
+.carrier-card span {
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    color: var(--text-dark);
+}
+
+.carrier-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.carrier-card:hover i {
+    transform: scale(1.1);
+}
+
+.carrier-card-statefarm:hover { border-color: #e02020 !important; }
+.carrier-card-statefarm:hover i { color: #e02020 !important; }
+
+.carrier-card-allstate:hover { border-color: #004a99 !important; }
+.carrier-card-allstate:hover i { color: #004a99 !important; }
+
+.carrier-card-liberty:hover { border-color: #fedb00 !important; }
+.carrier-card-liberty:hover i { color: #fedb00 !important; }
+
+.carrier-card-progressive:hover { border-color: #00599a !important; }
+.carrier-card-progressive:hover i { color: #00599a !important; }
+
+.carrier-card-amica:hover { border-color: #007c41 !important; }
+.carrier-card-amica:hover i { color: #007c41 !important; }
+
