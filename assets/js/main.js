@@ -46,10 +46,10 @@ function renderHeader() {
             <!-- Header Actions (Visible > 1100px) -->
             <div class="desktop-only align-items-center gap-1">
                 <a href="dashboard.html" class="btn btn-dark text-white fw-bold">Dashboard</a>
-                <a href="login.html" class="btn btn-outline border-2">Login</a>
+
                 <a href="register.html" class="btn btn-primary">Sign Up</a>
-                <button id="theme-toggle" class="btn btn-sm btn-dark ms-1" style="padding: 4px;"><i class="bi bi-moon-stars theme-icon-img"></i></button>
-                <button id="rtl-toggle" class="btn btn-sm btn-secondary">RTL</button>
+                <button id="theme-toggle" class="btn btn-sm btn-dark ms-1"><i class="bi bi-moon-stars theme-icon-img"></i></button>
+                <button id="rtl-toggle" class="btn btn-sm btn-secondary ms-1">RTL</button>
             </div>
         </div>
     </nav>
@@ -75,7 +75,7 @@ function renderHeader() {
                 }).join('')}
                 <hr>
                 <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+
                 <li class="nav-item"><a class="nav-link" href="register.html">Get Started</a></li>
                 <li class="nav-item d-flex gap-2 mt-3 justify-content-start">
                     <button class="btn btn-light w-50 theme-toggle-mobile text-start"><i class="bi bi-moon-stars me-2"></i>Theme</button>
