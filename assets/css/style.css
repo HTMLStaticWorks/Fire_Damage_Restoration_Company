@@ -563,21 +563,20 @@ p {
   justify-content: center;
   border: 1px solid var(--border-color);
   background-color: var(--bg-card);
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
 }
 
 .social-login-btn:hover {
-  transform: translateY(-3px);
+  background-color: var(--secondary);
   border-color: var(--accent) !important;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
 }
 
 .social-login-btn img {
-  filter: grayscale(1);
   transition: var(--transition);
-}
-
-.social-login-btn:hover img {
-  filter: grayscale(0);
+  width: 18px;
+  height: 18px;
 }
 
 /* Authentication Form Refinements */
@@ -607,9 +606,33 @@ p {
   flex-direction: row !important;
   justify-content: space-between !important;
   align-items: center !important;
-  width: 100%;
+  width: 100% !important;
   gap: 1rem;
   text-align: start !important;
+}
+
+.social-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 1.5rem 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.social-divider::before,
+.social-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.social-divider:not(:empty)::before {
+  margin-right: 1.5rem;
+}
+
+.social-divider:not(:empty)::after {
+  margin-left: 1.5rem;
 }
 
 .social-icons-row {
@@ -617,7 +640,7 @@ p {
   flex-direction: row !important;
   justify-content: center !important;
   align-items: center !important;
-  gap: 1rem !important;
+  gap: 2rem !important;
 }
 
 /* Mobile Center Alignment (< 1100px) */
@@ -632,7 +655,7 @@ p {
   p,
   .lead,
   span,
-  main div:not(.navbar-brand):not(.star-rating):not(.social-links):not(.mobile-nav-toggle) {
+  main div:not(.navbar-brand):not(.star-rating):not(.social-links):not(.mobile-nav-toggle):not(.journey-timeline):not(.journey-timeline *):not(.timeline-item) {
     text-align: center !important;
   }
 
@@ -643,7 +666,7 @@ p {
   }
 
   /* Target content-specific flex containers, excluding core UI components */
-  main .d-flex:not(.star-rating):not(.social-links):not(.navbar-nav):not(.social-icons-row):not(.auth-row) {
+  main .d-flex:not(.star-rating):not(.social-links):not(.navbar-nav):not(.social-icons-row):not(.auth-row):not(.journey-timeline):not(.journey-timeline *):not(.timeline-item) {
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
@@ -796,4 +819,82 @@ p {
 
 .carrier-card-amica:hover i {
   color: #007c41 !important;
+}
+
+/* Journey Timeline */
+.journey-timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.journey-timeline::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background-color: var(--accent);
+  opacity: 0.25;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -1px;
+  z-index: 0;
+}
+
+.timeline-item {
+  padding: 20px 40px;
+  position: relative;
+  background-color: transparent;
+  width: 50%;
+  z-index: 1;
+}
+
+
+
+.timeline-item.left {
+  left: 0;
+  text-align: right !important;
+}
+
+.timeline-item.right {
+  left: 50%;
+  text-align: left !important;
+}
+
+.timeline-item.left::after {
+  right: -10px;
+}
+
+.timeline-item.right::after {
+  left: -10px;
+}
+
+.timeline-content {
+  padding: 0;
+  position: relative;
+  border-radius: 6px;
+}
+
+@media screen and (max-width: 1100px) {
+  .journey-timeline::after {
+    left: 31px;
+  }
+
+  .timeline-item {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+    text-align: left !important;
+  }
+
+  .timeline-item::after {
+    left: 21px;
+  }
+
+  .timeline-item.left,
+  .timeline-item.right {
+    left: 0;
+    text-align: left !important;
+  }
 }

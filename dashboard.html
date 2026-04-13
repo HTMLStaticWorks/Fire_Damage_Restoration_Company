@@ -152,6 +152,16 @@
                             class="badge bg-danger ms-2">4</span></a></li>
                 <li><a href="#" data-section="documents"><i class="bi bi-file-earmark-arrow-up me-2"></i> Documents</a>
                 </li>
+                <li class="d-lg-none mt-3 px-3">
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-outline-light btn-sm w-50 theme-toggle-mobile">
+                            <i class="bi bi-moon-stars"></i> Theme
+                        </button>
+                        <button class="btn btn-outline-light btn-sm w-50 rtl-toggle-mobile">
+                            RTL
+                        </button>
+                    </div>
+                </li>
                 <li class="mt-5"><a href="index.html"><i class="bi bi-box-arrow-left me-2"></i> Exit to Site</a></li>
             </ul>
         </nav>
@@ -164,6 +174,14 @@
                         <i class="bi bi-list"></i>
                     </button>
                     <div class="ms-auto d-flex align-items-center gap-3">
+                        <div class="d-none d-lg-flex align-items-center gap-2 me-3">
+                            <button id="theme-toggle" class="btn btn-outline-secondary btn-sm" title="Toggle Theme">
+                                <i class="bi bi-moon-stars"></i>
+                            </button>
+                            <button id="rtl-toggle" class="btn btn-outline-secondary btn-sm" title="Toggle RTL">
+                                RTL
+                            </button>
+                        </div>
                         <span class="fw-bold d-none d-md-block" id="current-user-name">Admin User</span>
                         <img src="assets/images/customer_1.png" class="rounded-circle" width="35" height="35">
                     </div>
@@ -176,28 +194,28 @@
                     <h2 class="mb-4">Dashboard Overview</h2>
                     <div class="row g-4 mb-4">
                         <div class="col-md-3">
-                            <div class="card stat-card p-4">
+                            <div class="card stat-card p-4 h-100">
                                 <h6 class="text-dark mb-2">Total Projects</h6>
                                 <h2 class="mb-0">128</h2>
                                 <small class="text-success"><i class="bi bi-arrow-up"></i> 12% increase</small>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="card stat-card p-4">
+                            <div class="card stat-card p-4 h-100">
                                 <h6 class="text-dark mb-2">Active Claims</h6>
                                 <h2 class="mb-0">45</h2>
                                 <small class="text-dark">Currently in progress</small>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="card stat-card p-4">
+                            <div class="card stat-card p-4 h-100">
                                 <h6 class="text-dark mb-2">Pending Invoices</h6>
-                                <h2 class="mb-0">$12.4k</h2>
+                                <h2 class="mb-0">$13k</h2>
                                 <small class="text-danger"><i class="bi bi-clock"></i> 3 Overdue</small>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="card stat-card p-4">
+                            <div class="card stat-card p-4 h-100">
                                 <h6 class="text-dark mb-2">Customer Rating</h6>
                                 <h2 class="mb-0">4.9/5</h2>
                                 <small class="text-warning"><i class="bi bi-star-fill"></i> Top Performer</small>
@@ -300,7 +318,7 @@
                     <h2 class="mb-4">All Projects (Orders)</h2>
                     <div class="row g-4">
                         <div class="col-md-6 col-lg-4">
-                            <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                            <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
                                 <img src="assets/images/project_1.png" class="card-img-top" height="150"
                                     style="object-fit: cover;">
                                 <div class="card-body">
@@ -310,12 +328,13 @@
                                         <div class="progress-bar bg-primary" style="width: 65%;"></div>
                                     </div>
                                     <div class="d-flex justify-content-between small">
-                                        <span>Progress</span><span>65%</span></div>
+                                        <span>Progress</span><span>65%</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-lg-4">
-                            <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                            <div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
                                 <img src="assets/images/project_2.png" class="card-img-top" height="150"
                                     style="object-fit: cover;">
                                 <div class="card-body">
@@ -325,7 +344,8 @@
                                         <div class="progress-bar bg-primary" style="width: 30%;"></div>
                                     </div>
                                     <div class="d-flex justify-content-between small">
-                                        <span>Progress</span><span>30%</span></div>
+                                        <span>Progress</span><span>30%</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -360,16 +380,16 @@
                     <h2 class="mb-4">Document Repository</h2>
                     <div class="row g-3">
                         <div class="col-md-4">
-                            <div class="card p-3 border-0 shadow-sm text-center rounded-4">
+                            <div class="card p-3 border-0 shadow-sm text-center rounded-4 h-100">
                                 <i class="bi bi-file-earmark-pdf text-danger fs-1 mb-2"></i>
                                 <h6>Safety_Guidelines.pdf</h6>
                                 <button class="btn btn-sm btn-link">Download</button>
                             </div>
                         </div>
                         <div class="col-md-4">
-                            <div class="card p-3 border-0 shadow-sm text-center rounded-4">
+                            <div class="card p-3 border-0 shadow-sm text-center rounded-4 h-100">
                                 <i class="bi bi-file-earmark-spreadsheet text-success fs-1 mb-2"></i>
-                                <h6>Q1_Revenue_Report.xlsx</h6>
+                                <h6>Revenue_Report.xlsx</h6>
                                 <button class="btn btn-sm btn-link">Download</button>
                             </div>
                         </div>
@@ -419,6 +439,49 @@
                     if (window.innerWidth <= 992) {
                         sidebar.classList.remove('active');
                     }
+                });
+            });
+
+            // Theme & RTL Support
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeToggleMobile = document.querySelector('.theme-toggle-mobile');
+            const rtlToggle = document.getElementById('rtl-toggle');
+            const rtlToggleMobile = document.querySelector('.rtl-toggle-mobile');
+
+            function applyTheme(theme) {
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+                const icon = theme === 'dark' ? 'bi-sun' : 'bi-moon-stars';
+                [themeToggle, themeToggleMobile].forEach(btn => {
+                    if (btn) {
+                        const i = btn.querySelector('i');
+                        if (i) i.className = `bi ${icon}${btn.classList.contains('w-50') ? ' me-2' : ''}`;
+                    }
+                });
+            }
+
+            function applyRTL(isRTL) {
+                document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
+                localStorage.setItem('rtl', isRTL);
+            }
+
+            // Init
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            applyTheme(savedTheme);
+            const savedRTL = localStorage.getItem('rtl') === 'true';
+            applyRTL(savedRTL);
+
+            [themeToggle, themeToggleMobile].forEach(btn => {
+                if (btn) btn.addEventListener('click', () => {
+                    const newTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                    applyTheme(newTheme);
+                });
+            });
+
+            [rtlToggle, rtlToggleMobile].forEach(btn => {
+                if (btn) btn.addEventListener('click', () => {
+                    const newRTL = document.documentElement.getAttribute('dir') !== 'rtl';
+                    applyRTL(newRTL);
                 });
             });
         });
