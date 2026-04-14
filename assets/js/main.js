@@ -9,6 +9,7 @@ function initApp() {
     renderFooter();
     setupTheme();
     setupRTL();
+    updateServiceDetails();
 }
 
 const navLinks = [
@@ -38,7 +39,10 @@ function renderHeader() {
 
             <div class="desktop-only gap-2">
                 ${navLinks.map(link => {
-                    const isActive = link.url === currentPage ? 'active' : '';
+                    let isActive = link.url === currentPage ? 'active' : '';
+                    if (link.name === 'Services' && currentPage === 'service-details.html') {
+                        isActive = 'active';
+                    }
                     return `<a href="${link.url}" class="nav-link fw-bold ${isActive}">${link.name}</a>`;
                 }).join('')}
             </div>
@@ -70,7 +74,10 @@ function renderHeader() {
                     <hr>
                 ` : ''}
                 ${navLinks.map(link => {
-                    const isActive = link.url === currentPage ? 'active' : '';
+                    let isActive = link.url === currentPage ? 'active' : '';
+                    if (link.name === 'Services' && currentPage === 'service-details.html') {
+                        isActive = 'active';
+                    }
                     return `<li class="nav-item"><a class="nav-link ${isActive}" href="${link.url}">${link.name}</a></li>`;
                 }).join('')}
                 <hr>
@@ -187,4 +194,66 @@ function setupRTL() {
             });
         }
     });
+}
+
+function updateServiceDetails() {
+    const currentPage = window.location.pathname.split("/").pop() || 'index.html';
+    if (currentPage !== 'service-details.html') return;
+
+    const params = new URLSearchParams(window.location.search);
+    const serviceType = params.get('service') || 'fire';
+
+    const serviceData = {
+        'fire': {
+            title: 'Fire & Smoke Cleanup',
+            desc: 'Professional restoration services to reclaim your property from fire and smoke damage.',
+            img: 'assets/images/service_fire_unique_2.jpg',
+            intro: 'When fire strikes, the damage goes far beyond what is visible to the naked eye. Soot and smoke can penetrate walls, ducts, and personal belongings, causing long-term health risks and structural decay if not treated immediately.'
+        },
+        'structural': {
+            title: 'Structural Rebuild',
+            desc: 'Complete construction and restoration services to rebuild your home stronger than ever.',
+            img: 'assets/images/service_structural_unique.jpg',
+            intro: 'From structural framing and roofing to fine interior painting, our rebuild services ensure your property is restored to its pre-loss condition or better. We handle the entire construction process from permits to final inspection.'
+        },
+        'water': {
+            title: 'Water Damage Repair',
+            desc: 'Rapid response water mitigation and drying services to protect your structural integrity.',
+            img: 'assets/images/service_water_unique.jpg',
+            intro: 'Water damage can spread quickly and lead to mold growth within 24-48 hours. Our certified technicians use advanced extraction and industrial drying equipment to save your floors, walls, and personal property.'
+        },
+        'mold': {
+            title: 'Mold Remediation',
+            desc: 'Scientifically focused mold removal and air purification for a healthy environment.',
+            img: 'assets/images/service_mold_unique.jpg',
+            intro: 'Visible mold is often just the surface of a larger issue. We utilize specialized containment, HEPA air scrubbing, and antimicrobial treatments to safely remove mold spores and prevent their return to your home.'
+        },
+        'contents': {
+            title: 'Contents Restoration',
+            desc: 'Specialized cleaning for your personal belongings, from heirlooms to high-end electronics.',
+            img: 'assets/images/service_contents_unique.jpg',
+            intro: 'We understand that your belongings are irreplaceable. Our ultrasonic cleaning and chemical restoration techniques are designed to salvage items damaged by soot, smoke, or water, returning them to pristine condition.'
+        },
+        'insurance': {
+            title: 'Insurance Consulting',
+            desc: 'Expert guidance through the complex claims process to maximize your coverage.',
+            img: 'assets/images/service_insurance_unique.jpg',
+            intro: 'Navigating insurance claims after a disaster can be overwhelming. We work directly with your adjuster, providing the detailed scientific documentation required to ensure your claim is processed fairly and efficiently.'
+        }
+    };
+
+    const data = serviceData[serviceType] || serviceData['fire'];
+
+    const titleEl = document.getElementById('service-title');
+    const descEl = document.getElementById('service-desc');
+    const imgEl = document.getElementById('service-image');
+    const introEl = document.getElementById('service-intro');
+
+    if (titleEl) titleEl.innerText = data.title;
+    if (descEl) descEl.innerText = data.desc;
+    if (imgEl) imgEl.src = data.img;
+    if (introEl) introEl.innerText = data.intro;
+
+    // Update Page Title
+    document.title = `${data.title} - RestoreX`;
 }
